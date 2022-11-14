@@ -16,7 +16,7 @@ ruby main.rb
 | 👤 Name | Github |
 |------|--------|
 |Carlos Molina|[@cmolinan](https://github.com/cmolinan)|
-|Angel Urray|[@angelurray](https://github.com/angelurray)|
+|Angel Urray|[@angelurray](https://github.com/angeluray)|
 |Kumilachew Getie|[@kumilachew-g](https://github.com/@kumilachew-g)|
 
 ## �� Contributing
