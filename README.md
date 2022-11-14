@@ -1,4 +1,4 @@
-## TDD Project
+## Catalog of things
 
 #### Description
 > In this project, we have created a console app that will help you to keep a record of different types of things you own: books, music albums and games. The data is stored in JSON files.
@@ -16,7 +16,7 @@ ruby main.rb
 | 👤 Name | Github |
 |------|--------|
 |Carlos Molina|[@cmolinan](https://github.com/cmolinan)|
-|Angel Urray|[@angelurray](https://github.com/angeluray)|
+|Angel Urray|[@angeluray](https://github.com/angeluray)|
 |Kumilachew Getie|[@kumilachew-g](https://github.com/@kumilachew-g)|
 
 ## �� Contributing
