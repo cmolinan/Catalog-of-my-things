@@ -1,6 +1,5 @@
 require_relative '../ruby_classes/book'
 describe Book do
-
   describe Book.new('George Martin', 'bad', '2015-01-30') do
     it { is_expected.to have_attributes(publisher: 'George Martin') }
     it { is_expected.to have_attributes(cover_state: 'bad') }
@@ -18,12 +17,12 @@ describe Book do
     expect(@book).to be_instance_of Book
   end
   it 'validates parameters' do
-    expect(@book.publisher).not_to eq('John Mathews1')
+    expect(@book.publisher).to eq('John Mathews')
     expect(@book.cover_state).to eq('good')
     expect(@book.publish_date).to eq('2011-01-10')
   end
 
-  it 'should return archive false' do
+  it 'should returns true' do
     expect(@book.move_to_archive).to eq true
   end
 end
