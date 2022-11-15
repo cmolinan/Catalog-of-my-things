@@ -1,7 +1,8 @@
 class Item
   attr_accessor :genre, :author, :source, :label, :publish_date, :archived
+  attr_reader :id
 
-  def initialize(id:, publish_date:, archived: false)
+  def initialize(publish_date, archived: false)
     @id = id || Random.rand(1..1000)
     @publish_date = publish_date
     @archived = archived
@@ -30,6 +31,6 @@ class Item
   private
 
   def can_be_archived?
-    Time.new.year - publish_date > 10
+    Time.new.year - publish_date.to_i > 10
   end
 end
