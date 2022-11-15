@@ -1,64 +1,35 @@
+require './app'
+
 class Main
-  def welcome
-    puts 'Hiya, welcome to your catalog of things!'
-    puts "====================================\n\n"
-    full_list
+  def initialize
+    @app = App.new
   end
 
-  def full_list
-    puts "\n"
-    puts 'Please choose an option by entering a number:'
-    options = ['List all books', 'List all music albums', 'List of games', 'List all labels (e.g. "Gift", "New")', 'List all genres (e.g "Pop", "Bachata")',
-               'List all authors (e.g. "Stephen King")', 'Add a book', 'Add a music album', 'Add a game', 'Exit']
-    options.each.with_index(1) do |option, index|
-      puts "#{index}. #{option}"
-    end
-    puts "\n"
-    main_input = gets.chomp.to_i
-    listed_sections(main_input)
-  end
-
-  def listed_sections(user_input)
-    case user_input
-    when 1
-      # list_book method
-      puts "Comming soon!"
-    when 2
-      # list_albums method
-      puts "Comming soon!"
-    when 3
-      # list_games method
-      puts "Comming soon!"
-    when 4
-      # list_labels method
-      puts "Comming soon!"
-    when 5
-      # list_genres method
-      puts "Comming soon!"
-    when 6
-      # list_authors method
-      puts "Comming soon!"
-    when 10
-      puts 'Exiting app... We hope to see you soon!'
-    else
-      creators(user_input)
+  def run
+    action = 0
+    while action != 10
+      display_actions
+      action = gets.chomp.to_i
+      @app.handle_action(action)
     end
   end
 
-  def creators(creator_input)
-    case creator_input
-    when 7
-      # create_book method
-      full_list
-    when 8
-      # create_album method
-      full_list
-    when 9
-      # create_game method
-      full_list
-    end
+  def display_actions
+    puts
+    puts 'Welcome to our application!'
+    puts
+    puts '1-  List all books'
+    puts '2-  List all music albums'
+    puts '3-  List of games'
+    puts '4-  List all genres'
+    puts '5-  List all labels'
+    puts '6-  List all authors'
+    puts '7-  Add a book'
+    puts '8-  Add a music album'
+    puts '9-  Add a game'
+    puts '10- Exit'
   end
 end
 
 main = Main.new
-main.welcome
+main.run
