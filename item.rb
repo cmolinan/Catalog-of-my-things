@@ -29,8 +29,6 @@ class Item
 
   private
 
-  private
-
   def can_be_archived?
     Time.new.year - publish_date > 10
   end
