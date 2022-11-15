@@ -9,7 +9,7 @@ describe Genre do
     end
 
     it 'should add the input item to the collection of items' do
-      item = Item.new(id: nil, publish_date: Time.new(11/15/2022))
+      item = Item.new(id: nil, publish_date: Time.new(11 / 15 / 2022))
       new_genre.add_item(item)
       expect(new_genre.items.length).to eq 1
     end
