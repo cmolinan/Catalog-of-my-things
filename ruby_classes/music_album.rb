@@ -5,7 +5,7 @@ class MusicAlbum < Item
   attr_reader :publish_date
 
   def initialize(name, publish_date, on_spotify)
-    super(publish_date)
+    super(id: nil, publish_date: publish_date)
     @name = name
     @on_spotify = on_spotify
   end
