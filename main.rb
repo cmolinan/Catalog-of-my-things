@@ -22,22 +22,22 @@ class Main
     case user_input
     when 1
       # list_book method
-      full_list
+      puts "Comming soon!"
     when 2
       # list_albums method
-      full_list
+      puts "Comming soon!"
     when 3
       # list_games method
-      full_list
+      puts "Comming soon!"
     when 4
       # list_labels method
-      full_list
+      puts "Comming soon!"
     when 5
       # list_genres method
-      full_list
+      puts "Comming soon!"
     when 6
       # list_authors method
-      full_list
+      puts "Comming soon!"
     when 10
       puts 'Exiting app... We hope to see you soon!'
     else
