@@ -56,7 +56,7 @@ class App
   def list_all_game
     puts 'Games'
     @games.each_with_index do |game, index|
-      puts "[#{index}] Game-ID: #{game.id} Multiplayer: #{game.multiplayer}, Last Played At: #{game.last_played_at},
+      puts "[#{index}] Multiplayer: #{game.multiplayer}, Last Played At: #{game.last_played_at},
       Publish Date: #{game.publish_date}"
     end
   end
@@ -64,9 +64,7 @@ class App
   def list_all_authors
     puts "LIST OF AUTHORS:\n\n"
     @authors.each_with_index do |author, index|
-      author.items.each do |item|
-        puts "[#{index}] #{author.first_name} #{author.last_name} |||| Creator of: #{item.label.title}"
-      end
+        puts "[#{index}] #{author.first_name} #{author.last_name}"
     end
   end
 
@@ -141,23 +139,20 @@ class App
   end
 
   def add_game
-    p 'Game\'s author first name:'
+    print 'Game\'s author first name:'
     first_name_author = gets.chomp.capitalize
 
-    p 'Game\'s author last name:'
+    print 'Game\'s author last name:'
     last_name_author = gets.chomp.capitalize
 
-    p 'Game\'s title:'
-    game_title = gets.chomp.capitalize
-
-    p 'Is the game multiplayer? [Y/N]: '
+    print 'Is the game multiplayer? [Y/N]: '
     multiplayer = gets.chomp.downcase == 'y' || false
 
-    p 'Date of publish [Enter date in format (yyyy-mm-dd)]: '
+    print 'Date of publish [Enter date in format (yyyy-mm-dd)]: '
     publish_date = get_date_from_user(gets.chomp)
     return unless publish_date
 
-    p 'Enter the last time you played it by date [Enter date in format (yyyy-mm-dd)]: '
+    print 'Enter the last time you played it by date [Enter date in format (yyyy-mm-dd)]: '
     last_played_at = get_date_from_user(gets.chomp)
     return unless last_played_at
 
@@ -167,13 +162,8 @@ class App
     new_author = Author.new(first_name_author, last_name_author)
     new_author.add_item(new_game)
 
-    # Game's name
-    new_label = Label.new(game_title, 'unknown')
-    new_label.add_item(new_game)
-
     @games << new_game
     @authors << new_author
-    @labels << new_label
     puts 'Well done, game created successfully'
   end
 
