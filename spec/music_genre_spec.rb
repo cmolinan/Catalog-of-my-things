@@ -1,4 +1,3 @@
-require 'pry'
 require './ruby_classes/music_genre'
 require './ruby_classes/item'
 
