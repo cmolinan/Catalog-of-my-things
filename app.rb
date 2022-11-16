@@ -83,6 +83,18 @@ class App
     puts "\nLabel created successfully !\n"
   end
 
+  def list_all_books
+    puts ''
+    if @books.empty?
+      puts('No Books Available')
+    else
+      puts "LIST OF ALL BOOKS -->\n"
+    end
+    @books.each_with_index do |book, index|
+      puts "#{index + 1}) Publisher: #{book.publisher}, Cover_state: #{book.cover_state}, Publish_date: #{book.publish_date}"
+    end
+  end
+
   def add_music_album
     print 'Please, type the album name: '
     name = gets.chomp
