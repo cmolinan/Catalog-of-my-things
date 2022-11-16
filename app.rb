@@ -1,5 +1,7 @@
+require 'pry-byebug'
 require './ruby_classes/music_album'
 require './ruby_classes/music_genre'
+require './ruby_classes/book'
 require './modules/music_album_module'
 require './modules/music_genre_module'
 require 'Date'
@@ -48,7 +50,24 @@ class App
 
   def list_all_authors; end
 
-  def add_book; end
+  def add_book
+    print "\nPublisher: "
+    publisher = gets.chomp
+    print 'Cover State: '
+    cover = gets.chomp
+    print 'Publish Date: '
+    date = gets.chomp
+
+    if publisher.strip != '' && cover.strip != '' && date != ''
+      # binding.pry
+      book = Book.new(publisher, cover, date)
+      @books << book
+      puts "\nBook created successfully !\n\n"
+      # add_label(@labels)
+    else
+      puts "\nMust enter complete data to create a book"
+    end
+  end
 
   def add_music_album
     print 'Please, type the album name: '
@@ -90,7 +109,7 @@ class App
     when 1..6
       handle_valid_view_data_actions(action)
     when 7
-      # add_book
+      add_book
     when 8
       add_music_album
     when 9
