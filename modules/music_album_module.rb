@@ -9,7 +9,7 @@ module MusicAlbumDataController
         MusicAlbum.new(ID: album['id'], Name: album['name'], Publish_date: album[publish_date],
                        Spotify: album['on_spotify'])
       end
-     else
+    else
       []
     end
   end
