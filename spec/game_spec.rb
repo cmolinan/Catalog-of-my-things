@@ -1,10 +1,17 @@
 require './ruby_classes/game'
 
 describe Game do
-  describe 'Create a game' do
-    it 'should return a instance' do
-      game = Game.new(false, 2022, 2018)
-      expect(game).to be_instance_of Game
+  context 'test game' do
+    before :each do
+      @game = Game.new(false, '2010-9-8', '2008-9-9')
+    end
+
+    it 'check instance' do
+      expect(@game).to be_an_instance_of Game
+    end
+
+    it 'check publish_date' do
+      expect(@game.publish_date).to eq '2008-9-9'
     end
 
     it 'should have attributtes' do
@@ -20,17 +27,15 @@ describe Game do
       game = Game.new(true, 2022, 2018)
       expect(game).to have_attributes(multiplayer: true)
     end
-  end
 
-  describe 'can_be_archived?' do
-    it 'Should return true if it has more than 2 years' do
-      game = Game.new(false, 2019, 2009)
-      expect(game.send(:can_be_archived?)).to be true
+    it 'check last_played_at' do
+      expect @last_played_at == '2010-9-8'
     end
 
-    it 'Should return false if it has less than 2 years' do
-      game = Game.new(false, 2021, 2009)
-      expect(game.send(:can_be_archived?)).to be false
+    it 'check multiplayer' do
+      expect @multiplayer == false
     end
   end
 end
+
+

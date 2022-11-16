@@ -8,29 +8,29 @@ class Item
     @archived = archived
   end
 
-  def add_genre(genre)
+  def genre=(genre)
     @genre = genre
+    @genre.add_item(self) unless @genre.items.include?(self)
   end
 
-  def add_author(author)
-    @author = author
+  def author=(author)
+    @autor = author
+    @autor.add_item(self) unless @autor.items.include?(self)
   end
 
-  def add_source(source)
-    @source = source
-  end
-
-  def add_label(label)
+  def label=(label)
     @label = label
+    @label.add_item(self) unless @label.items.include?(self)
   end
 
   def move_to_archive
-    @archived = can_be_archived? == true
+    @archived = true if can_be_archived?
   end
 
   private
 
   def can_be_archived?
-    Time.new.year - publish_date.to_i > 10
+    current_year = Time.new.year
+    current_year - @publish_date[:year] > 10
   end
 end
