@@ -29,8 +29,6 @@ class App
     end
   end
 
-  def list_all_books; end
-
   def list_all_music_album
     puts 'Music Albums'
     @music_albums.each do |music_album|
@@ -47,8 +45,6 @@ class App
 
   def list_all_games; end
 
-  def list_all_labels; end
-
   def list_all_authors; end
 
   def add_book
@@ -60,7 +56,6 @@ class App
     date = gets.chomp
 
     if publisher.strip != '' && cover.strip != '' && date != ''
-      # binding.pry
       book = Book.new(publisher, cover, date)
       @books << book
       puts "\nBook created successfully !\n\n"
@@ -92,6 +87,18 @@ class App
     end
     @books.each_with_index do |book, index|
       puts "#{index + 1}) Publisher: #{book.publisher}, Cover_state: #{book.cover_state}, Publish_date: #{book.publish_date}"
+    end
+  end
+
+  def list_all_labels
+    puts ''
+    if @labels.empty?
+      puts('No Labels Available')
+    else
+      puts "LIST OF ALL LABELS -->\n"
+    end
+    @labels.each_with_index do |label, index|
+      puts "#{index + 1}) Title: #{label.title}, Color: #{label.color}"
     end
   end
 
