@@ -3,10 +3,14 @@ require './ruby_classes/music_album'
 require './ruby_classes/music_genre'
 require './ruby_classes/book'
 require './ruby_classes/label'
+require './ruby_classes/game'
+require './ruby_classes/author'
 require './modules/music_album_module'
 require './modules/music_genre_module'
 require './modules/book_module'
 require './modules/label_module'
+require './modules/game_module'
+require './modules/author_module'
 require 'Date'
 
 class App
@@ -14,12 +18,14 @@ class App
   include MusicGenresDataController
   include BooksDataController
   include LabelsDataController
+  include GameController
+  include AuthorController
 
   def initialize
     @books = load_books
-    @games = []
+    @games = load_game
     @labels = load_labels
-    @authors = []
+    @authors = load_authors
     @music_albums = load_albums
     @genres = load_genres
   end
@@ -47,9 +53,20 @@ class App
     end
   end
 
-  def list_all_games; end
+  def list_all_game
+    puts 'Games'
+    @games.each do |game|
+      puts "Multiplayer: #{game.multiplayer}, Last Played At: #{game.last_played_at},
+      Publish Date: #{game.publish_date}"
+    end
+  end
 
-  def list_all_authors; end
+  def list_all_authors
+    puts 'Authors'
+    @authors.each do |author|
+      puts "First Name: #{author.first_name} Last Name: #{author.first_name}"
+    end
+  end
 
   def add_book
     print "\nPublisher: "
@@ -121,7 +138,50 @@ class App
     puts 'Album created successfully'
   end
 
-  def add_game; end
+  def add_game
+    p 'Game\'s author first name:'
+    first_name_author = gets.chomp.capitalize
+
+    p 'Game\'s author last name:'
+    last_name_author = gets.chomp.capitalize
+
+    p 'Game\'s title:'
+    game_title = gets.chomp.capitalize
+
+    p 'Is the game multiplayer? [Y/N]: '
+    multiplayer = gets.chomp.downcase == 'y' || false
+
+    p 'Date of publish [Enter date in format (yyyy-mm-dd)]: '
+    publish_date = get_date_from_user(gets.chomp)
+    return unless publish_date
+
+    p 'Enter the last time you played it by date [Enter date in format (yyyy-mm-dd)]: '
+    last_played_at = get_date_from_user(gets.chomp)
+    return unless last_played_at
+
+    p 'Game\'s genre? [Fantasy, Adventure, etc]:'
+    game_genre = gets.chomp.capitalize
+
+    new_game = Game.new(multiplayer, last_played_at, publish_date)
+
+    # Game's author
+    new_author = Author.new(first_name_author, last_name_author)
+    new_author.add_item(new_game)
+
+    # Game's name
+    new_label = Label.new(game_title, 'unknown')
+    new_label.add_item(new_game)
+
+    # Game's Genre
+    new_genre = Genre.new('', game_genre)
+    new_genre.add_item(new_game)
+
+    @games << new_game
+    @author << new_author
+    @label << new_label
+    @genre << new_genre
+    puts 'Well done, game created successfully'
+  end
 
   def get_date_from_user(data)
     Date.parse(data)
@@ -133,8 +193,8 @@ class App
   def save_data
     save_books
     save_labels
-    # add_author
-    # save_game
+    add_author
+    save_game
     save_albums
     save_genres
   end
