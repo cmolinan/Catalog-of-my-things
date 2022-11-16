@@ -1,3 +1,6 @@
+require './ruby_classes/music_album'
+require './ruby_classes/music_genre'
+
 class App
   def initialize
     @books = []
