@@ -2,6 +2,7 @@ require './ruby_classes/music_album'
 require './ruby_classes/music_genre'
 require './modules/music_album_module'
 require './modules/music_genre_module'
+require 'Date'
 
 class App
   include MusicAlbumDataController
@@ -100,17 +101,17 @@ class App
   def handle_valid_view_data_actions(action)
     case action
     when 1
-      # list_all_books
+      list_all_books
     when 2
       list_all_music_album
     when 3
-      # list_all_games
+      list_all_games
     when 4
       list_all_genres
     when 5
-      # list_all_labels
+      list_all_labels
     when 6
-      # list_all_authors
+      list_all_authors
     end
   end
 end
