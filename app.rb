@@ -80,7 +80,7 @@ class App
     # add_author
     # save_game
     save_albums
-    save_genres 
+    save_genres
   end
 
   private
