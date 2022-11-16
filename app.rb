@@ -1,5 +1,7 @@
 require './ruby_classes/music_album'
 require './ruby_classes/music_genre'
+require './modules/music_album_module'
+require './modules/music_genre_module'
 
 class App
   def initialize
