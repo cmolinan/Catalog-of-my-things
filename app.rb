@@ -55,16 +55,18 @@ class App
 
   def list_all_game
     puts 'Games'
-    @games.each do |game|
-      puts "Multiplayer: #{game.multiplayer}, Last Played At: #{game.last_played_at},
+    @games.each_with_index do |game, index|
+      puts "[#{index}] Game-ID: #{game.id} Multiplayer: #{game.multiplayer}, Last Played At: #{game.last_played_at},
       Publish Date: #{game.publish_date}"
     end
   end
 
   def list_all_authors
-    puts 'Authors'
-    @authors.each do |author|
-      puts "First Name: #{author.first_name} Last Name: #{author.first_name}"
+    puts "LIST OF AUTHORS:\n\n"
+    @authors.each_with_index do |author, index|
+      author.items.each do |item|
+        puts "[#{index}] #{author.first_name} #{author.last_name} |||| Creator of: #{item.label.title}"
+      end
     end
   end
 
@@ -159,9 +161,6 @@ class App
     last_played_at = get_date_from_user(gets.chomp)
     return unless last_played_at
 
-    p 'Game\'s genre? [Fantasy, Adventure, etc]:'
-    game_genre = gets.chomp.capitalize
-
     new_game = Game.new(multiplayer, last_played_at, publish_date)
 
     # Game's author
@@ -172,14 +171,9 @@ class App
     new_label = Label.new(game_title, 'unknown')
     new_label.add_item(new_game)
 
-    # Game's Genre
-    new_genre = Genre.new(50, game_genre)
-    new_genre.add_item(new_game)
-
     @games << new_game
-    @author << new_author
-    @label << new_label
-    @genre << new_genre
+    @authors << new_author
+    @labels << new_label
     puts 'Well done, game created successfully'
   end
 
@@ -210,7 +204,7 @@ class App
     when 8
       add_music_album
     when 9
-      # add_game
+      add_game
     end
   end
 
@@ -221,7 +215,7 @@ class App
     when 2
       list_all_music_album
     when 3
-      list_all_games
+      list_all_game
     when 4
       list_all_genres
     when 5
