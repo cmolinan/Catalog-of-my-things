@@ -73,4 +73,9 @@ class App
     puts 'Wrong date format'
     false
   end
+
+  def save_data
+    save_albums
+    save_genres
+  end
 end
