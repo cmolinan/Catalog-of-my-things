@@ -1,12 +1,11 @@
-require_relative 'item'
+require './ruby_classes/item'
 
 class MusicAlbum < Item
   attr_accessor :on_spotify, :archived, :name
   attr_reader :publish_date
 
   def initialize(name, publish_date, on_spotify)
-    super(publish_date)
-    # super(publish_date: publish_date)
+    super(id: nil, publish_date: publish_date)
     @name = name
     @on_spotify = on_spotify
   end

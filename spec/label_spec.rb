@@ -1,35 +1,36 @@
-require_relative '../ruby_classes/label'
+require './ruby_classes/label'
+require './ruby_classes/book'
+
 describe Label do
-  describe Label.new('Lord of the Rings', 'red') do
-    it { is_expected.to have_attributes(title: 'Lord of the Rings') }
-    it { is_expected.to have_attributes(color: 'red') }
+  before :each do
+    @label = Label.new(id: 2, title: 'Lord of the Rings', color: 'Blue')
   end
 
-  it 'validates that only accepts two arguments' do
-    expect { Label.new('Game of Thrones', 'blue', '2022-10-10') }.to raise_error(ArgumentError)
+  it 'should detect the label id' do
+    expect(@label.id).to eq 2
   end
 
-  before(:each) do
-    @label = Label.new('The Queen', 'red')
+  it 'should detect the label title' do
+    expect(@label.title).to eq 'Lord of the Rings'
+  end
+
+  it 'should detect the label color' do
+    expect(@label.color).to eq 'Blue'
   end
 
   it 'validates if returns a class instance' do
     expect(@label).to be_instance_of Label
   end
 
-  it 'validates parameters' do
-    expect(@label.title).not_to eq('The King')
-    expect(@label.color).to eq('red')
-  end
+  it 'should detect the label items' do
+    book = Book.new(title: 'Title', publisher: 'Publisher', cover_state: 'bad', publish_date: Date.parse('2022/10/10'))
+    @label.add_item(book)
+    expect(@label.items.include?(book)).to eq true
+    expect(book.label).to eq @label
 
-  context 'Method add_item of Label Class' do
-    it 'validates if returns 2 items' do
-      item = Item.new('2019-05-21')
-      @label.add_item(item)
-      item = Item.new('2021-08-11')
-      @label.add_item(item)
-      total_items = @label.items.length
-      expect(total_items).to eq 2
-    end
+    book2 = Book.new(title: 'Title', publisher: 'Publisher', cover_state: 'bad', publish_date: Date.parse('2022/10/10'))
+    book2.label = @label
+    expect(@label.items.include?(book2)).to eq true
+    expect(book2.label).to eq @label
   end
 end
