@@ -2,6 +2,12 @@
 -- books table (add all properties and associations from the parent Item class as table columns)
 -- labels table
 
+CREATE TABLE Label (
+  id INT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+  title VARCHAR,
+  color VARCHAR
+);
+
 CREATE TABLE item (
 	id INT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
 	genre_id INT,
@@ -9,8 +15,8 @@ CREATE TABLE item (
 	label_id INT,
 	publish_date DATE,
   archived BOOLEAN,
-	FOREIGN KEY (genre_id) REFERENCES genre(id)
-	FOREIGN KEY (author_id) REFERENCES author(id)
+	-- FOREIGN KEY (genre_id) REFERENCES genre(id),
+	-- FOREIGN KEY (author_id) REFERENCES author(id),
 	FOREIGN KEY (label_id) REFERENCES label(id)
 );
 
@@ -19,10 +25,4 @@ CREATE TABLE Book (
   publisher VARCHAR,
   cover_state VARCHAR,
   FOREIGN KEY (id) REFERENCES item(id)
-);
-
-CREATE TABLE Label (
-  id INT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
-  title VARCHAR,
-  color VARCHAR
 );
