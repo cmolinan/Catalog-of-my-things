@@ -75,7 +75,26 @@ class App
   end
 
   def save_data
+    # save_books
+    # save_labels
+    # add_author
+    # save_game
     save_albums
     save_genres
+  end
+
+  private
+
+  def handle_valid_actions(action)
+    case action
+    when 1..6
+      handle_valid_view_data_actions(action)
+    when 7
+      # add_book
+    when 8
+      add_music_album
+    when 9
+      add_game
+    end
   end
 end
