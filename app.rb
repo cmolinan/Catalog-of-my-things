@@ -34,9 +34,14 @@ class App
     end
    end
 
-  def list_all_games; end
+   def list_all_genres
+    puts 'Genres'
+    @genres.each do |genre|
+      puts "Name: #{genre.name}"
+    end
+  end
 
-  def list_all_genres; end
+  def list_all_games; end
 
   def list_all_labels; end
 
