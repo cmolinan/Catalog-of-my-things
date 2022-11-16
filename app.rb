@@ -2,6 +2,7 @@ require 'pry-byebug'
 require './ruby_classes/music_album'
 require './ruby_classes/music_genre'
 require './ruby_classes/book'
+require './ruby_classes/label'
 require './modules/music_album_module'
 require './modules/music_genre_module'
 require 'Date'
@@ -63,10 +64,23 @@ class App
       book = Book.new(publisher, cover, date)
       @books << book
       puts "\nBook created successfully !\n\n"
-      # add_label(@labels)
+      add_label(@labels)
     else
       puts "\nMust enter complete data to create a book"
     end
+  end
+
+  def add_label(db_labels)
+    print 'Title: '
+    title = gets.chomp
+    print 'Label Color: '
+    color = gets.chomp
+
+    return unless title.strip != '' && color.strip != ''
+
+    label = Label.new(title, color)
+    db_labels << label
+    puts "\nLabel created successfully !\n"
   end
 
   def add_music_album
