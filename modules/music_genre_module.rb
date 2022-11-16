@@ -1,5 +1,11 @@
 module MusicGenresDataController
     def load_genres
-        
+        if File.exist?('./json_files/genres.json') && File.read('./json_files/genres.json') != ''
+            JSON.parse(File.read('./json_files/genres.json')).map do |genre|
+              Genre.new(id: nil, name: genre['name'])
+            end
+          else
+            []
+          end
     end
 end
