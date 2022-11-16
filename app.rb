@@ -4,6 +4,9 @@ require './modules/music_album_module'
 require './modules/music_genre_module'
 
 class App
+  include MusicAlbumDataController
+  include MusicGenresDataController
+
   def initialize
     @books = []
     @music_albums = []
