@@ -8,4 +8,12 @@ module MusicGenresDataController
             []
           end
     end
+
+    def save_genres
+        data = []
+        @genres.each do |genre|
+          data.push({ name: genre.name })
+        end
+        open('./json_files/genre.json', 'w') { |f| f << JSON.generate(data) }
+      end
 end
