@@ -1,3 +1,6 @@
+require './ruby_classes/music_genre'
+require 'json'
+
 module MusicGenresDataController
   def load_genres
     if File.exist?('./json_files/genres.json') && File.read('./json_files/genres.json') != ''
