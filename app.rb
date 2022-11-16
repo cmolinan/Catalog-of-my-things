@@ -9,11 +9,11 @@ class App
 
   def initialize
     @books = []
-    @music_albums = []
     @games = []
-    @genres = []
     @labels = []
     @authors = []
+    @music_albums = load_albums
+    @genres = load_genres
   end
 
   def handle_action(option)
