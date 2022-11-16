@@ -6,17 +6,19 @@ require './ruby_classes/label'
 require './modules/music_album_module'
 require './modules/music_genre_module'
 require './modules/book_module'
+require './modules/label_module'
 require 'Date'
 
 class App
   include MusicAlbumDataController
   include MusicGenresDataController
   include BooksDataController
+  include LabelsDataController
 
   def initialize
     @books = load_books
     @games = []
-    @labels = []
+    @labels = load_labels
     @authors = []
     @music_albums = load_albums
     @genres = load_genres
@@ -130,7 +132,7 @@ class App
 
   def save_data
     save_books
-    # save_labels
+    save_labels
     # add_author
     # save_game
     save_albums
