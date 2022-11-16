@@ -25,7 +25,7 @@ class App
     @books = load_books
     @games = load_game
     @labels = load_labels
-    @authors = load_authors
+    @authors = load_author
     @music_albums = load_albums
     @genres = load_genres
   end
@@ -173,7 +173,7 @@ class App
     new_label.add_item(new_game)
 
     # Game's Genre
-    new_genre = Genre.new('', game_genre)
+    new_genre = Genre.new(50, game_genre)
     new_genre.add_item(new_game)
 
     @games << new_game
