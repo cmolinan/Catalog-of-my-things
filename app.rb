@@ -66,4 +66,11 @@ class App
   end
 
   def add_game; end
+
+  def get_date_from_user(data)
+    Date.parse(data)
+  rescue ArgumentError
+    puts 'Wrong date format'
+    false
+  end
 end
