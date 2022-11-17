@@ -40,16 +40,16 @@ class App
   end
 
   def list_all_music_album
-    puts 'Music Albums'
-    @music_albums.each do |music_album|
-      puts "Name: #{music_album.name}, Publish Date: #{music_album.publish_date}, On Spotify: #{music_album.on_spotify}"
+    puts 'List of All Music Albums:'
+    @music_albums.each_with_index do |music_album, index|
+      puts "#{index + 1}) Name: #{music_album.name}, Publish Date: #{music_album.publish_date}, On Spotify: #{music_album.on_spotify}"
     end
   end
 
   def list_all_genres
-    puts 'Genres'
-    @genres.each do |genre|
-      puts "Name: #{genre.name}"
+    puts 'List of Genres:'
+    @genres.each_with_index do |genre, index|
+      puts "#{index + 1}) Name: #{genre.name}"
     end
   end
 
