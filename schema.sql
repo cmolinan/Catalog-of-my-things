@@ -2,6 +2,8 @@
 -- books table (add all properties and associations from the parent Item class as table columns)
 -- labels table
 
+CREATE DATABASE catalog;
+
 CREATE TABLE Label (
   id INT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
   title VARCHAR,
@@ -40,3 +42,4 @@ CREATE TABLE game (
   archived BOOLEAN,
   CONSTRAINT fk_authors FOREIGN KEY(id) REFERENCES authors(id)
 );
+
